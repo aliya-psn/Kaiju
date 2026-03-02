@@ -1,0 +1,232 @@
+/* pages/wordgen/wordgen.wxss */
+.container {
+  min-height: 100vh;
+  padding: 32rpx;
+  padding-bottom: 80rpx;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  margin-bottom: 40rpx;
+}
+
+.header-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #FFD93D 0%, #FF9A8B 100%);
+  color: #fff;
+  font-size: 24rpx;
+  padding: 12rpx 28rpx;
+  border-radius: 32rpx;
+  margin-bottom: 24rpx;
+  font-weight: 600;
+  box-shadow: 0 4rpx 16rpx rgba(255, 217, 61, 0.4);
+}
+
+.header-title {
+  display: block;
+  font-size: 48rpx;
+  font-weight: 800;
+  color: #333;
+  letter-spacing: 4rpx;
+}
+
+.header-subtitle {
+  display: block;
+  font-size: 28rpx;
+  color: #666;
+  margin-top: 8rpx;
+}
+
+/* 分类标签 */
+.category-scroll {
+  white-space: nowrap;
+  margin-bottom: 32rpx;
+}
+
+.category-tabs {
+  display: inline-flex;
+  gap: 16rpx;
+  padding: 8rpx 0;
+}
+
+.category-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 8rpx;
+  padding: 20rpx 28rpx;
+  background: #fff;
+  border-radius: 48rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.06);
+  flex-shrink: 0;
+  transition: all 0.2s;
+}
+
+.category-tab.active {
+  background: linear-gradient(135deg, #FF6B9D 0%, #FF9A8B 100%);
+  color: #fff;
+  box-shadow: 0 6rpx 20rpx rgba(255, 107, 157, 0.4);
+}
+
+.category-icon {
+  width: 36rpx;
+  height: 36rpx;
+  flex-shrink: 0;
+}
+
+.category-tab.active .category-icon {
+  filter: brightness(0) invert(1);
+}
+
+.category-name {
+  font-size: 28rpx;
+  font-weight: 600;
+}
+
+/* 结果卡片 */
+.result-card {
+  padding: 40rpx;
+  margin-bottom: 40rpx;
+}
+
+.result-header {
+  margin-bottom: 24rpx;
+}
+
+.result-label {
+  font-size: 26rpx;
+  font-weight: 600;
+  color: #999;
+}
+
+.result-content {
+  background: #F8F4F0;
+  border-radius: 20rpx;
+  padding: 36rpx;
+}
+
+.word-item {
+  padding: 28rpx;
+  border-radius: 16rpx;
+  text-align: center;
+}
+
+.word-item.civilian {
+  background: linear-gradient(135deg, #4CD964 0%, #5AC8FA 100%);
+  color: #fff;
+}
+
+.word-item.undercover {
+  background: linear-gradient(135deg, #FF6B9D 0%, #AF52DE 100%);
+  color: #fff;
+  margin-top: 24rpx;
+}
+
+.word-label {
+  display: block;
+  font-size: 24rpx;
+  opacity: 0.9;
+  margin-bottom: 8rpx;
+}
+
+.word-text {
+  font-size: 44rpx;
+  font-weight: 800;
+  letter-spacing: 4rpx;
+}
+
+.word-divider {
+  text-align: center;
+  font-size: 28rpx;
+  color: #999;
+  margin: 16rpx 0;
+  font-weight: 600;
+}
+
+.result-placeholder {
+  text-align: center;
+  padding: 60rpx;
+  color: #999;
+  font-size: 28rpx;
+}
+
+/* 生成按钮 */
+.action-area {
+  margin-bottom: 48rpx;
+}
+
+.generate-btn {
+  width: 100%;
+  height: 96rpx;
+  background: linear-gradient(135deg, #FF6B9D 0%, #FF9A8B 100%);
+  color: #fff;
+  border: none;
+  border-radius: 48rpx;
+  font-size: 32rpx;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12rpx;
+  box-shadow: 0 8rpx 24rpx rgba(255, 107, 157, 0.4);
+}
+
+.generate-btn::after {
+  border: none;
+}
+
+.btn-icon {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+/* 玩法提示 */
+.tips-card {
+  padding: 32rpx;
+}
+
+.tips-title {
+  font-size: 30rpx;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 24rpx;
+  padding-bottom: 16rpx;
+  border-bottom: 1rpx solid #eee;
+}
+
+.tips-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.tip-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16rpx;
+}
+
+.tip-num {
+  width: 40rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  text-align: center;
+  background: linear-gradient(135deg, #FF6B9D 0%, #FF9A8B 100%);
+  color: #fff;
+  font-size: 24rpx;
+  font-weight: 700;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.tip-text {
+  flex: 1;
+  font-size: 26rpx;
+  color: #666;
+  line-height: 1.6;
+}
+
+.tip-highlight {
+  color: #FF6B9D;
+  font-weight: 600;
+}

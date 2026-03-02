@@ -1,0 +1,46 @@
+<!--pages/index/index.wxml-->
+<view class="container">
+  <!-- 顶部 Banner -->
+  <view class="banner">
+    <view class="banner-content">
+      <text class="banner-title">派对聚会趣味游戏</text>
+      <text class="banner-desc">面对面嗨玩，解锁欢乐时刻</text>
+    </view>
+    <view class="banner-decoration"></view>
+  </view>
+
+  <!-- 游戏类目卡片 -->
+  <view class="section-title">
+    <text>选择你想玩的游戏</text>
+  </view>
+  <view class="game-cards">
+    <view class="game-card card" wx:for="{{gameList}}" wx:key="id" 
+          bindtap="onGameTap" data-id="{{item.id}}">
+      <view class="game-card-inner" style="background: linear-gradient(135deg, {{item.color1}}, {{item.color2}})">
+        <image class="game-icon" src="/svg/{{item.icon}}" mode="aspectFit"/>
+        <view class="game-info">
+          <text class="game-name">{{item.name}}</text>
+          <text class="game-desc">{{item.desc}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 热门玩家展示（使用 SVG 头像） -->
+  <view class="section-title">
+    <text>一起玩的朋友</text>
+  </view>
+  <scroll-view class="avatar-scroll" scroll-x>
+    <view class="avatar-list">
+      <view class="avatar-item" wx:for="{{avatars}}" wx:key="id">
+        <image class="avatar-img" src="/svg/{{item.file}}" mode="aspectFill"/>
+        <text class="avatar-name">{{item.name}}</text>
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 底部装饰 -->
+  <view class="footer-tip">
+    <text>更多游戏即将上线，敬请期待 ~</text>
+  </view>
+</view>

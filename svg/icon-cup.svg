@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 140" fill="none">
+  <defs>
+    <linearGradient id="cupGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF6B9D"/>
+      <stop offset="100%" style="stop-color:#AF52DE"/>
+    </linearGradient>
+    <linearGradient id="cupHighlight" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#fff;stop-opacity:0.3"/>
+      <stop offset="100%" style="stop-color:transparent"/>
+    </linearGradient>
+  </defs>
+  <!-- o? - c??b -->
+  <path d="M20 20 L100 20 L85 130 L35 130 Z" fill="url(#cupGrad)" stroke="#FF9A8B" stroke-width="1"/>
+  <path d="M25 25 L95 25 L82 125 L38 125 Z" fill="url(#cupHighlight)" opacity="0.5"/>
+  <!-- o? -->
+  <ellipse cx="60" cy="20" rx="40" ry="8" fill="#AF52DE" stroke="#FF9A8B" stroke-width="1"/>
+</svg>

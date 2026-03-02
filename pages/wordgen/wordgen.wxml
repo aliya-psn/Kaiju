@@ -1,0 +1,71 @@
+<!--pages/wordgen/wordgen.wxml - 谁是卧底·词库自动生成（单机主持人模式）-->
+<view class="container">
+  <!-- 顶部 -->
+  <view class="header">
+    <view class="header-badge">永远玩不腻 · 每次都有新词</view>
+    <text class="header-title">谁是卧底</text>
+    <text class="header-subtitle">词库生成 · 主持人专用</text>
+  </view>
+
+  <!-- 主题分类 -->
+  <scroll-view class="category-scroll" scroll-x>
+    <view class="category-tabs">
+      <view class="category-tab {{currentCategory === item.id ? 'active' : ''}}"
+            wx:for="{{categories}}" wx:key="id"
+            bindtap="onCategoryTap" data-id="{{item.id}}">
+        <image class="category-icon" src="/svg/{{item.icon}}" mode="aspectFit"/>
+        <text class="category-name">{{item.name}}</text>
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 词对展示（主持人查看） -->
+  <view class="result-card card">
+    <view class="result-header">
+      <text class="result-label">本轮词对（仅主持人可见）</text>
+    </view>
+    <view class="result-content" wx:if="{{wordPair}}">
+      <view class="word-item civilian">
+        <text class="word-label">平民词 · 发给多数人</text>
+        <text class="word-text">{{wordPair[0]}}</text>
+      </view>
+      <view class="word-divider">VS</view>
+      <view class="word-item undercover">
+        <text class="word-label">卧底词 · 随机指定 1 人</text>
+        <text class="word-text">{{wordPair[1]}}</text>
+      </view>
+    </view>
+    <view class="result-placeholder" wx:else>
+      <text>点击下方按钮生成词对</text>
+    </view>
+  </view>
+
+  <!-- 生成按钮 -->
+  <view class="action-area">
+    <button class="generate-btn" bindtap="onGenerate">
+      <image class="btn-icon" src="/svg/icon-dice.svg" mode="aspectFit"/>
+      <text>随机生成新词</text>
+    </button>
+  </view>
+
+  <!-- 玩法说明 -->
+  <view class="tips-card card">
+    <view class="tips-title">
+      <text>玩法提示</text>
+    </view>
+    <view class="tips-list">
+      <view class="tip-item">
+        <text class="tip-num">1</text>
+        <text class="tip-text">需要一位<text class="tip-highlight">主持人</text>持手机，其余玩家围坐</text>
+      </view>
+      <view class="tip-item">
+        <text class="tip-num">2</text>
+        <text class="tip-text">主持人根据上方词对，<text class="tip-highlight">私下分配</text>：随机选 1 人告知卧底词，其他人告知平民词</text>
+      </view>
+      <view class="tip-item">
+        <text class="tip-num">3</text>
+        <text class="tip-text">每人仅知自己的词，<text class="tip-highlight">不可透露</text>。轮流描述，其他人投票找出卧底</text>
+      </view>
+    </view>
+  </view>
+</view>

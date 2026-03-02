@@ -1,0 +1,15 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/wordgen/wordgen",
+    "pages/dice/dice"
+  ],
+  "window": {
+    "navigationBarTitleText": "聚会趣味游戏",
+    "navigationBarBackgroundColor": "#FF6B9D",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#F8F4F0"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}
