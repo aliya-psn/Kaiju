@@ -2,21 +2,22 @@
 Page({
   data: {
     covered: true,
-    diceValues: [1, 1],
+    diceValues: [1, 1, 1, 1, 1],
+    diceRows: [[1, 1], [1, 1, 1]],
     shaking: false
   },
 
   onLoad() {
-    // 初始随机骰子
     this.rollDice()
   },
 
   rollDice() {
-    const diceValues = [
-      Math.floor(Math.random() * 6) + 1,
-      Math.floor(Math.random() * 6) + 1
+    const diceValues = Array(5).fill(0).map(() => Math.floor(Math.random() * 6) + 1)
+    const diceRows = [
+      diceValues.slice(0, 2),  // 上排2个
+      diceValues.slice(2, 5)   // 下排3个
     ]
-    this.setData({ diceValues })
+    this.setData({ diceValues, diceRows })
   },
 
   onShake() {

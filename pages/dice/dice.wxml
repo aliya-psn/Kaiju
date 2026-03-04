@@ -1,52 +1,42 @@
 <!--pages/dice/dice.wxml - 酒筛子-->
 <view class="container">
-  <!-- 顶部 -->
-  <view class="header">
-    <view class="header-badge">摇一摇 · 喝一杯</view>
-    <text class="header-title">酒筛子</text>
-    <text class="header-subtitle">扣住摇骰，揭开揭晓</text>
-  </view>
-
-  <!-- 骰子/杯子卡片 -->
-  <view class="dice-card card" bindtap="onToggleCover">
-    <!-- 杯子盖住 -->
-    <view class="dice-area cup-mode" wx:if="{{covered}}">
-      <view class="cup-wrap">
-        <image class="cup-img" src="/svg/icon-cup.svg" mode="widthFix"/>
-        <text class="cup-hint">点击揭开</text>
-      </view>
-    </view>
-    <!-- 骰子可见 -->
-    <view class="dice-area dice-mode" wx:else>
-      <view class="dice-wrap">
-        <view class="dice {{shaking ? 'shaking' : ''}}" wx:for="{{diceValues}}" wx:key="index">
-          <view class="dice-face dice-{{item}}">
-            <view class="pip p1"></view>
-            <view class="pip p2"></view>
-            <view class="pip p3"></view>
-            <view class="pip p4"></view>
-            <view class="pip p5"></view>
-            <view class="pip p6"></view>
-            <view class="pip p7"></view>
-            <view class="pip p8"></view>
-            <view class="pip p9"></view>
+  <!-- 骰子舞台 -->
+  <view class="stage" bindtap="onToggleCover">
+    <view class="stage-base"></view>
+    <view class="dice-tray {{!covered ? 'revealed' : ''}} {{shaking ? 'shaking' : ''}}">
+      <view class="dice-row" wx:for="{{diceRows}}" wx:for-index="ri" wx:key="ri">
+        <view class="dice-3d {{(ri + ii) % 2 === 0 ? 'red' : 'black'}}" wx:for="{{item}}" wx:for-item="val" wx:for-index="ii" wx:key="ii">
+          <view class="dice-box">
+            <view class="dice-face dice-{{val}}">
+              <view class="pip p1"></view>
+              <view class="pip p2"></view>
+              <view class="pip p3"></view>
+              <view class="pip p4"></view>
+              <view class="pip p5"></view>
+              <view class="pip p6"></view>
+              <view class="pip p7"></view>
+              <view class="pip p8"></view>
+              <view class="pip p9"></view>
+            </view>
           </view>
         </view>
       </view>
-      <text class="dice-hint">点击卡片可扣住</text>
+    </view>
+    <view class="bowl-wrap {{covered ? 'closed' : 'open'}}">
+      <view class="bowl">
+        <view class="bowl-body"></view>
+        <view class="bowl-rim"></view>
+      </view>
     </view>
   </view>
 
-  <!-- 操作按钮 -->
-  <view class="action-area">
-    <button class="shake-btn" bindtap="onShake" disabled="{{!covered}}">
-      <image class="btn-icon" src="/svg/icon-dice.svg" mode="aspectFit"/>
-      <text>摇骰子</text>
+  <!-- 操作 -->
+  <view class="actions">
+    <button class="action-btn primary" bindtap="onShake" disabled="{{!covered}}" wx:if="{{covered}}">
+      <text>摇</text>
     </button>
-    <view class="cover-btn" bindtap="onToggleCover" wx:if="{{!covered}}">
-      <text>扣住</text>
+    <view class="action-btn" bindtap="onToggleCover" wx:else>
+      <text>扣</text>
     </view>
   </view>
-
-  <view class="tip-text">{{covered ? '摇骰子后点击卡片揭开' : '扣住后可重新摇'}}</view>
 </view>

@@ -5,7 +5,7 @@ Page({
       {
         id: 'wordgen',
         name: '谁是卧底 · 词库生成',
-        desc: '永远玩不腻，每次都有新词',
+        desc: '永远玩不腻',
         color1: '#FF6B9D',
         color2: '#FF9A8B',
         icon: 'icon-mask.svg'
@@ -13,7 +13,7 @@ Page({
       {
         id: 'dice',
         name: '酒筛子',
-        desc: '摇一摇，喝一杯，嗨翻全场',
+        desc: '摇一摇，喝一杯',
         color1: '#4CD964',
         color2: '#5AC8FA',
         icon: 'icon-dice.svg'
