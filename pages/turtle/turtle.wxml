@@ -1,0 +1,37 @@
+<!--pages/turtle/turtle.wxml - 海龟汤-->
+<view class="container">
+  <view class="header">
+    <text class="header-title">海龟汤</text>
+  </view>
+
+  <!-- 题目卡片 -->
+  <view class="story-card card">
+    <view class="story-label">故事（主持人朗读）</view>
+    <view class="story-text" wx:if="{{puzzle}}">{{puzzle.story}}</view>
+    <view class="story-placeholder" wx:else>点击下方获取题目</view>
+  </view>
+
+  <!-- 答案（主持人查看） -->
+  <view class="answer-card card">
+    <view class="answer-header" bindtap="onToggleAnswer">
+      <text class="answer-label">{{answerVisible ? '收起答案' : '查看答案'}}</text>
+      <text class="answer-arrow">{{answerVisible ? '▲' : '▼'}}</text>
+    </view>
+    <view class="answer-content" wx:if="{{answerVisible && puzzle}}">
+      <text class="answer-text">{{puzzle.answer}}</text>
+    </view>
+  </view>
+
+  <!-- 操作 -->
+  <view class="actions">
+    <button class="action-btn primary" bindtap="onNext">
+      <text>换一题</text>
+    </button>
+  </view>
+
+  <!-- 玩法提示 -->
+  <view class="tips-card card">
+    <view class="tips-title">玩法</view>
+    <view class="tips-item">主持人朗读故事，玩家轮流提是非题，主持人根据答案回答「是/否/无关」</view>
+  </view>
+</view>

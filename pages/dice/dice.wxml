@@ -1,9 +1,14 @@
 <!--pages/dice/dice.wxml - 酒筛子-->
-<view class="container">
-  <!-- 骰子舞台 -->
-  <view class="stage" bindtap="onToggleCover">
-    <view class="stage-base"></view>
-    <view class="dice-tray {{!covered ? 'revealed' : ''}} {{shaking ? 'shaking' : ''}}">
+<view class="page-wrap">
+  <view class="header">
+    <text class="header-title">酒筛子</text>
+    <text class="header-desc">摇一摇 · 扣碗开</text>
+  </view>
+
+  <view class="container">
+    <view class="stage" bindtap="onToggleCover">
+      <view class="stage-base"></view>
+      <view class="dice-tray {{!covered ? 'revealed' : ''}} {{shaking ? 'shaking' : ''}}">
       <view class="dice-row" wx:for="{{diceRows}}" wx:for-index="ri" wx:key="ri">
         <view class="dice-3d {{(ri + ii) % 2 === 0 ? 'red' : 'black'}}" wx:for="{{item}}" wx:for-item="val" wx:for-index="ii" wx:key="ii">
           <view class="dice-box">
@@ -21,22 +26,18 @@
           </view>
         </view>
       </view>
-    </view>
-    <view class="bowl-wrap {{covered ? 'closed' : 'open'}}">
+      </view>
+      <view class="bowl-wrap {{covered ? 'closed' : 'open'}}">
       <view class="bowl">
         <view class="bowl-body"></view>
         <view class="bowl-rim"></view>
       </view>
+      </view>
     </view>
-  </view>
 
-  <!-- 操作 -->
-  <view class="actions">
-    <button class="action-btn primary" bindtap="onShake" disabled="{{!covered}}" wx:if="{{covered}}">
-      <text>摇</text>
-    </button>
-    <view class="action-btn" bindtap="onToggleCover" wx:else>
-      <text>扣</text>
+    <view class="actions">
+      <view class="action-btn primary" bindtap="onShake" wx:if="{{covered}}"><text>摇</text></view>
+      <view class="action-btn secondary" bindtap="onToggleCover" wx:else><text>扣</text></view>
     </view>
   </view>
 </view>

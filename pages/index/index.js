@@ -1,59 +1,44 @@
 // pages/index/index.js
 Page({
   data: {
-    gameList: [
-      {
-        id: 'wordgen',
-        name: '谁是卧底 · 词库生成',
-        desc: '永远玩不腻',
-        color1: '#FF6B9D',
-        color2: '#FF9A8B',
-        icon: 'icon-mask.svg'
-      },
-      {
-        id: 'dice',
-        name: '酒筛子',
-        desc: '摇一摇，喝一杯',
-        color1: '#4CD964',
-        color2: '#5AC8FA',
-        icon: 'icon-dice.svg'
-      },
-      {
-        id: 'turtle',
-        name: '海龟汤',
-        desc: '烧脑推理，揭开谜底',
-        color1: '#AF52DE',
-        color2: '#FF6B9D',
-        icon: 'icon-turtle.svg'
-      }
+    multiGames: [
+      { id: 'wordgen', name: '谁是卧底', desc: '词库生成', accent: 'multi-1', icon: 'icon-mask.svg' },
+      { id: 'dice', name: '酒筛子', desc: '摇一摇喝一杯', accent: 'multi-2', icon: 'icon-dice.svg' },
+      { id: 'turtle', name: '海龟汤', desc: '烧脑推理', accent: 'multi-3', icon: 'icon-turtle.svg' }
     ],
-    avatars: [
-      { id: 1, file: 'avatar_1.svg', name: '玩家1' },
-      { id: 2, file: 'avatar_2.svg', name: '玩家2' },
-      { id: 3, file: 'avatar_3.svg', name: '玩家3' },
-      { id: 4, file: 'avatar_4.svg', name: '玩家4' },
-      { id: 5, file: 'avatar_5.svg', name: '玩家5' },
-      { id: 6, file: 'avatar_6.svg', name: '玩家6' },
-      { id: 7, file: 'avatar_7.svg', name: '玩家7' },
-      { id: 8, file: 'avatar_8.svg', name: '玩家8' }
-    ]
+    soloGames: [
+      { id: 'fortune', name: '今日一签', desc: '抽个运势', accent: 'solo-1', icon: 'icon-fortune.svg' },
+      { id: 'persona', name: '今日人设', desc: '头像+梗', accent: 'solo-2', icon: 'icon-smile.svg' },
+      { id: 'decide', name: '选择困难', desc: '随机帮你选', accent: 'solo-3', icon: 'icon-shuffle.svg' }
+    ],
+  },
+
+
+  onShareAppMessage() {
+    return {
+      title: '派对聚会趣味游戏 · 谁是卧底/酒筛子/海龟汤',
+      path: '/pages/index/index'
+    }
+  },
+
+  onShareTap() {
+    wx.showToast({ title: '点击右上角分享', icon: 'none' })
   },
 
   onGameTap(e) {
     const id = e.currentTarget.dataset.id
-    if (id === 'wordgen') {
-      wx.navigateTo({
-        url: '/pages/wordgen/wordgen'
-      })
-    } else if (id === 'dice') {
-      wx.navigateTo({
-        url: '/pages/dice/dice'
-      })
+    const routes = {
+      wordgen: '/pages/wordgen/wordgen',
+      dice: '/pages/dice/dice',
+      turtle: '/pages/turtle/turtle',
+      fortune: '/pages/fortune/fortune',
+      persona: '/pages/persona/persona',
+      decide: '/pages/decide/decide'
+    }
+    if (routes[id]) {
+      wx.navigateTo({ url: routes[id] })
     } else {
-      wx.showToast({
-        title: '敬请期待',
-        icon: 'none'
-      })
+      wx.showToast({ title: '敬请期待', icon: 'none' })
     }
   }
 })

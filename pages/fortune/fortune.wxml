@@ -1,0 +1,21 @@
+<!--pages/fortune/fortune.wxml - 今日一签-->
+<view class="container">
+  <view class="header">
+    <text class="header-title">今日一签</text>
+  </view>
+
+  <view class="result-card card" wx:if="{{fortune}}">
+    <view class="fortune-type" style="color: {{fortune.color}}">{{fortune.type}}</view>
+    <view class="fortune-text">{{fortune.text}}</view>
+  </view>
+
+  <view class="result-placeholder card" wx:else>
+    <text>点击抽签</text>
+  </view>
+
+  <view class="actions">
+    <button class="action-btn primary" bindtap="onDraw">
+      <text>{{fortune ? '再抽一次' : '抽签'}}</text>
+    </button>
+  </view>
+</view>

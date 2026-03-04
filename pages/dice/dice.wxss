@@ -1,56 +1,95 @@
 /* pages/dice/dice.wxss */
-.container {
+page {
+  height: 100%;
+  overflow: hidden;
+}
+
+.page-wrap {
+  height: 100vh;
   min-height: 100vh;
-  padding: 48rpx 40rpx 60rpx;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, #0D1117 0%, #161B22 40%, #21262D 100%);
+}
+
+/* 顶部标题 */
+.header {
+  flex-shrink: 0;
+  padding: 32rpx 40rpx 24rpx;
+  text-align: center;
+}
+
+.header-title {
+  display: block;
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 6rpx;
+  margin-bottom: 8rpx;
+}
+
+.header-desc {
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, 0.55);
+  letter-spacing: 2rpx;
+}
+
+/* 主内容区 */
+.container {
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 0 40rpx 32rpx;
+  min-height: 0;
 }
 
 /* 骰子舞台 */
 .stage {
   position: relative;
   width: 100%;
-  height: 440rpx;
-  margin-bottom: 64rpx;
+  height: 420rpx;
+  max-height: 50vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  perspective: 800rpx;
+  perspective: 900rpx;
 }
 
-/* 底座 */
+/* 底座 - 浅色陶瓷盘，与碗配套 */
 .stage-base {
   position: absolute;
   bottom: 0;
   width: 560rpx;
-  height: 20rpx;
-  background: linear-gradient(180deg, #8B7355 0%, #6B5344 100%);
-  border-radius: 10rpx;
-  box-shadow: 
-    0 8rpx 0 #5a4638,
-    0 16rpx 32rpx rgba(0,0,0,0.2);
+  height: 28rpx;
+  background: linear-gradient(180deg, #E4E0D8 0%, #D0CCC4 40%, #B8B4AC 100%);
+  border-radius: 14rpx;
+  box-shadow:
+    0 4rpx 0 rgba(255, 255, 255, 0.4),
+    0 12rpx 36rpx rgba(0, 0, 0, 0.4),
+    inset 0 2rpx 0 rgba(255, 255, 255, 0.6);
 }
 
-/* 骰子托盘 - 上2下3 */
+/* 骰子托盘 */
 .dice-tray {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
-  gap: 20rpx;
-  padding-bottom: 32rpx;
+  gap: 18rpx;
+  padding-bottom: 28rpx;
   opacity: 0;
-  transform: scale(0.9);
-  transition: opacity 0.4s ease, transform 0.4s ease;
+  transform: scale(0.88);
+  transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1), transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
   z-index: 1;
 }
 
 .dice-row {
   display: flex;
-  gap: 24rpx;
+  gap: 26rpx;
   justify-content: center;
 }
 
@@ -65,75 +104,72 @@
 
 @keyframes trayShake {
   0%, 100% { transform: scale(1) translateX(0); }
-  20% { transform: scale(1.02) translateX(-8rpx); }
-  40% { transform: scale(1.02) translateX(8rpx); }
-  60% { transform: scale(1.01) translateX(-6rpx); }
-  80% { transform: scale(1.01) translateX(6rpx); }
+  25% { transform: scale(1.02) translateX(-10rpx); }
+  50% { transform: scale(1.02) translateX(10rpx); }
+  75% { transform: scale(1.01) translateX(-6rpx); }
 }
 
-/* 3D 立体骰子 - 实物立方体 */
+/* 3D 骰子 - 立体高级感 */
 .dice-3d {
-  perspective: 400rpx;
+  perspective: 500rpx;
 }
 
 .dice-box {
-  width: 72rpx;
-  height: 72rpx;
+  width: 80rpx;
+  height: 80rpx;
   position: relative;
   transform-style: preserve-3d;
-  transform: rotateX(-20deg) rotateY(8deg) rotateZ(-3deg);
-  border-radius: 10rpx;
-  box-shadow: 
-    3rpx 3rpx 0 #c8c8c8,
-    6rpx 6rpx 0 #b8b8b8,
-    9rpx 9rpx 0 #a8a8a8,
-    0 12rpx 24rpx rgba(0,0,0,0.25),
-    inset 2rpx 2rpx 0 rgba(255,255,255,0.9),
-    inset -1rpx -1rpx 0 rgba(0,0,0,0.05);
-  background: linear-gradient(150deg, #fffef9 0%, #f8f6f0 30%, #f0ede6 70%, #e8e4dc 100%);
+  transform: rotateX(-28deg) rotateY(12deg) rotateZ(-5deg);
+  border-radius: 12rpx;
+  box-shadow:
+    2rpx 2rpx 0 rgba(255, 255, 255, 0.6),
+    4rpx 4rpx 0 rgba(255, 255, 255, 0.3),
+    0 4rpx 0 #D0CCC4,
+    4rpx 8rpx 0 #C0BCB4,
+    8rpx 12rpx 0 #B0ACA4,
+    0 16rpx 40rpx rgba(0, 0, 0, 0.4),
+    inset 2rpx 2rpx 0 rgba(255, 255, 255, 0.95),
+    inset -2rpx -2rpx 0 rgba(0, 0, 0, 0.06);
+  background: linear-gradient(155deg, #FFFEF9 0%, #F8F5EF 25%, #EDE9E2 60%, #E2DED6 100%);
   transition: transform 0.3s ease;
-}
-
-.dice-box:active {
-  transform: rotateX(-20deg) rotateY(8deg) rotateZ(-3deg) scale(0.98);
 }
 
 .dice-face {
   width: 100%;
   height: 100%;
-  border-radius: 8rpx;
+  border-radius: 10rpx;
   position: relative;
 }
 
-/* 点数 - 红/黑 */
+/* 点数 - 大且醒目 */
 .pip {
   position: absolute;
-  width: 12rpx;
-  height: 12rpx;
+  width: 16rpx;
+  height: 16rpx;
   border-radius: 50%;
   opacity: 0;
-  box-shadow: 
-    0 1rpx 2rpx rgba(0,0,0,0.3),
-    inset 0 1rpx 0 rgba(255,255,255,0.2);
+  box-shadow:
+    0 2rpx 4rpx rgba(0, 0, 0, 0.35),
+    inset 0 1rpx 0 rgba(255, 255, 255, 0.35);
 }
 
 .dice-3d.red .pip {
-  background: #c62828;
+  background: radial-gradient(circle at 30% 30%, #FF5252, #C62828 60%, #B71C1C 100%);
 }
 
 .dice-3d.black .pip {
-  background: #1a1a1a;
+  background: radial-gradient(circle at 30% 30%, #546E7A, #37474F 60%, #263238 100%);
 }
 
-.p1 { top: 14rpx; left: 14rpx; }
-.p2 { top: 14rpx; left: 50%; transform: translateX(-50%); }
-.p3 { top: 14rpx; right: 14rpx; }
-.p4 { top: 50%; left: 14rpx; transform: translateY(-50%); }
+.p1 { top: 10rpx; left: 10rpx; }
+.p2 { top: 10rpx; left: 50%; transform: translateX(-50%); }
+.p3 { top: 10rpx; right: 10rpx; }
+.p4 { top: 50%; left: 10rpx; transform: translateY(-50%); }
 .p5 { top: 50%; left: 50%; transform: translate(-50%, -50%); }
-.p6 { top: 50%; right: 14rpx; transform: translateY(-50%); }
-.p7 { bottom: 14rpx; left: 14rpx; }
-.p8 { bottom: 14rpx; left: 50%; transform: translateX(-50%); }
-.p9 { bottom: 14rpx; right: 14rpx; }
+.p6 { top: 50%; right: 10rpx; transform: translateY(-50%); }
+.p7 { bottom: 10rpx; left: 10rpx; }
+.p8 { bottom: 10rpx; left: 50%; transform: translateX(-50%); }
+.p9 { bottom: 10rpx; right: 10rpx; }
 
 .dice-1 .p5 { opacity: 1; }
 .dice-2 .p1, .dice-2 .p9 { opacity: 1; }
@@ -142,17 +178,14 @@
 .dice-5 .p1, .dice-5 .p3, .dice-5 .p5, .dice-5 .p7, .dice-5 .p9 { opacity: 1; }
 .dice-6 .p1, .dice-6 .p3, .dice-6 .p4, .dice-6 .p6, .dice-6 .p7, .dice-6 .p9 { opacity: 1; }
 
-/* 立体碗 */
+/* 倒扣碗 - 浅色陶瓷，与深色背景对比 */
 .bowl-wrap {
   position: absolute;
-  bottom: 24rpx;
+  bottom: 20rpx;
   left: 50%;
   transform: translateX(-50%);
   z-index: 10;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: all 0.5s cubic-bezier(0.34, 1.4, 0.64, 1);
 }
 
 .bowl-wrap.closed {
@@ -161,33 +194,31 @@
 }
 
 .bowl-wrap.open {
-  transform: translateX(-50%) translateY(-320rpx) scale(0.75);
+  transform: translateX(-50%) translateY(-300rpx) scale(0.72);
   opacity: 0;
   pointer-events: none;
 }
 
 .bowl {
   position: relative;
-  width: 520rpx;
-  height: 280rpx;
+  width: 480rpx;
+  height: 260rpx;
 }
 
-/* 碗身：倒扣半球 - 装5颗骰子 */
 .bowl-body {
   position: absolute;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 500rpx;
-  height: 280rpx;
-  background: radial-gradient(ellipse 250rpx 280rpx at 50% 100%, #5a5a5a 0%, #454545 25%, #333 55%, #222 85%, #1a1a1a 100%);
+  width: 460rpx;
+  height: 260rpx;
+  background: radial-gradient(ellipse 230rpx 260rpx at 50% 100%, #E8E4DC 0%, #D8D4CC 25%, #C8C4BC 55%, #B8B4AC 85%, #A8A49C 100%);
   border-radius: 50% 50% 0 0;
-  box-shadow: 
-    inset 0 60rpx 100rpx rgba(0,0,0,0.45),
-    inset 0 -40rpx 60rpx rgba(255,255,255,0.06),
-    0 14rpx 0 #4a4a4a,
-    0 24rpx 60rpx rgba(0,0,0,0.4),
-    0 4rpx 0 rgba(255,255,255,0.03);
+  box-shadow:
+    inset 0 40rpx 60rpx rgba(255, 255, 255, 0.5),
+    inset 0 -30rpx 50rpx rgba(0, 0, 0, 0.08),
+    0 8rpx 0 rgba(255, 255, 255, 0.4),
+    0 16rpx 48rpx rgba(0, 0, 0, 0.5);
 }
 
 .bowl-rim {
@@ -195,47 +226,58 @@
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 520rpx;
-  height: 28rpx;
-  background: linear-gradient(180deg, #666 0%, #4a4a4a 40%, #353535 80%, #2a2a2a 100%);
-  border-radius: 14rpx;
-  box-shadow: 
-    0 6rpx 12rpx rgba(0,0,0,0.4),
-    inset 0 2rpx 0 rgba(255,255,255,0.2),
-    inset 0 -2rpx 0 rgba(0,0,0,0.2);
+  width: 480rpx;
+  height: 24rpx;
+  background: linear-gradient(180deg, #E0DCD4 0%, #C8C4BC 50%, #B0ACA4 100%);
+  border-radius: 12rpx;
+  box-shadow:
+    0 4rpx 12rpx rgba(0, 0, 0, 0.35),
+    inset 0 1rpx 0 rgba(255, 255, 255, 0.6);
 }
 
-/* 操作按钮 - 统一风格 */
+/* 操作按钮 - 正圆形 */
 .actions {
-  width: 100%;
+  flex-shrink: 0;
   display: flex;
+  flex-direction: row;
   justify-content: center;
+  align-items: center;
+  gap: 40rpx;
+  padding: 28rpx 0;
 }
 
 .action-btn {
-  width: 160rpx;
-  height: 80rpx;
-  border-radius: 40rpx;
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 70rpx;
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 32rpx;
-  font-weight: 600;
-  border: 2rpx solid transparent;
-  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.08);
+  overflow: hidden;
 }
 
-.action-btn::after {
-  border: none;
+.action-btn text {
+  font-size: 40rpx;
+  font-weight: 600;
+  line-height: 1;
 }
 
 .action-btn.primary {
-  background: linear-gradient(135deg, #4CD964 0%, #5AC8FA 100%);
+  background: linear-gradient(135deg, #00BFA5 0%, #64FFDA 100%);
+  box-shadow: 0 8rpx 28rpx rgba(0, 191, 165, 0.4);
+}
+
+.action-btn.primary text {
   color: #fff;
 }
 
-.action-btn:not(.primary) {
-  background: #fff;
-  color: #4CD964;
-  border-color: #4CD964;
+.action-btn.secondary {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1rpx solid rgba(255, 255, 255, 0.35);
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.2);
+}
+
+.action-btn.secondary text {
+  color: #fff;
 }

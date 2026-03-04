@@ -1,0 +1,21 @@
+<!--pages/persona/persona.wxml - 今日人设-->
+<view class="container">
+  <view class="header">
+    <text class="header-title">今日人设</text>
+  </view>
+
+  <view class="result-card card" wx:if="{{result}}">
+    <image class="persona-avatar" src="/svg/{{result.avatar}}" mode="aspectFill"/>
+    <view class="persona-text">{{result.text}}</view>
+  </view>
+
+  <view class="result-placeholder card" wx:else>
+    <text>点击抽取今日人设</text>
+  </view>
+
+  <view class="actions">
+    <button class="action-btn primary" bindtap="onDraw">
+      <text>{{result ? '换一个' : '抽取人设'}}</text>
+    </button>
+  </view>
+</view>

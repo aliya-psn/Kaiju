@@ -1,0 +1,31 @@
+<!--pages/decide/decide.wxml - 选择困难-->
+<view class="container">
+  <view class="header">
+    <text class="header-title">选择困难</text>
+  </view>
+
+  <scroll-view class="preset-scroll" scroll-x>
+    <view class="preset-tabs">
+      <view class="preset-tab {{currentPreset === item.name ? 'active' : ''}}"
+            wx:for="{{presets}}" wx:key="name"
+            bindtap="onPresetTap" data-name="{{item.name}}">
+        <text>{{item.name}}</text>
+      </view>
+    </view>
+  </scroll-view>
+
+  <view class="result-card card" wx:if="{{result}}">
+    <view class="result-label">就它了</view>
+    <view class="result-text">{{result}}</view>
+  </view>
+
+  <view class="result-placeholder card" wx:else>
+    <text>选个主题，点下面按钮</text>
+  </view>
+
+  <view class="actions">
+    <button class="action-btn primary" bindtap="onPick">
+      <text>随机选</text>
+    </button>
+  </view>
+</view>

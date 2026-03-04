@@ -1,4 +1,7 @@
 {
   "usingComponents": {},
-  "navigationBarTitleText": "酒筛子"
+  "navigationBarTitleText": "酒筛子",
+  "navigationBarBackgroundColor": "#0D1117",
+  "navigationBarTextStyle": "white",
+  "disableScroll": true
 }

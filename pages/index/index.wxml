@@ -7,44 +7,60 @@
     <view class="banner-content">
       <text class="banner-tag">PARTY GAMES</text>
       <text class="banner-title">派对聚会趣味游戏</text>
-      <text class="banner-desc">面对面嗨玩 · 解锁欢乐时刻</text>
+      <text class="banner-desc">多人嗨玩 · 单人解闷</text>
     </view>
   </view>
 
-  <!-- 游戏类目卡片 - 2列布局 -->
-  <view class="section-title">
-    <text>选择你想玩的游戏</text>
-  </view>
-  <view class="game-cards">
-    <view class="game-card" wx:for="{{gameList}}" wx:key="id" 
-          bindtap="onGameTap" data-id="{{item.id}}">
-      <view class="game-card-inner" style="background: linear-gradient(145deg, {{item.color1}}, {{item.color2}})">
-        <view class="game-icon-wrap">
-          <image class="game-icon" src="/svg/{{item.icon}}" mode="aspectFit"/>
-        </view>
-        <view class="game-info">
-          <text class="game-name">{{item.name}}</text>
-          <text class="game-desc">{{item.desc}}</text>
+  <!-- 多人游戏 -->
+  <view class="section">
+    <view class="section-tag multi">多人</view>
+    <view class="section-title">聚会一起玩</view>
+    <view class="game-cards">
+      <view class="game-card" wx:for="{{multiGames}}" wx:key="id" 
+            bindtap="onGameTap" data-id="{{item.id}}" data-type="multi">
+        <view class="game-card-inner {{item.accent}}">
+          <view class="game-icon-wrap">
+            <image class="game-icon" src="/svg/{{item.icon}}" mode="aspectFit"/>
+          </view>
+          <view class="game-info">
+            <text class="game-name">{{item.name}}</text>
+            <text class="game-desc">{{item.desc}}</text>
+          </view>
         </view>
       </view>
     </view>
   </view>
 
-  <!-- 热门玩家展示（使用 SVG 头像） -->
-  <view class="section-title">
-    <text>一起玩的朋友</text>
-  </view>
-  <scroll-view class="avatar-scroll" scroll-x>
-    <view class="avatar-list">
-      <view class="avatar-item" wx:for="{{avatars}}" wx:key="id">
-        <image class="avatar-img" src="/svg/{{item.file}}" mode="aspectFill"/>
-        <text class="avatar-name">{{item.name}}</text>
+  <!-- 单人游戏 -->
+  <view class="section">
+    <view class="section-tag solo">单人</view>
+    <view class="section-title">一个人也好玩</view>
+    <view class="game-cards">
+      <view class="game-card" wx:for="{{soloGames}}" wx:key="id" 
+            bindtap="onGameTap" data-id="{{item.id}}" data-type="solo">
+        <view class="game-card-inner {{item.accent}}">
+          <view class="game-icon-wrap">
+            <image class="game-icon" src="/svg/{{item.icon}}" mode="aspectFit"/>
+          </view>
+          <view class="game-info">
+            <text class="game-name">{{item.name}}</text>
+            <text class="game-desc">{{item.desc}}</text>
+          </view>
+        </view>
       </view>
     </view>
-  </scroll-view>
-
-  <!-- 底部装饰 -->
-  <view class="footer-tip">
-    <text>更多游戏即将上线，敬请期待 ~</text>
   </view>
+
+  <!-- 邀请好友 -->
+  <view class="invite-card card" bindtap="onShareTap">
+    <view class="invite-content">
+      <text class="invite-title">邀请好友一起玩</text>
+      <text class="invite-desc">聚会游戏，人多才嗨</text>
+    </view>
+    <button class="invite-btn" open-type="share">
+      <text>分享给好友</text>
+    </button>
+  </view>
+
+  <view class="footer-tip">更多游戏即将上线 ~</view>
 </view>

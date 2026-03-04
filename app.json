@@ -2,7 +2,11 @@
   "pages": [
     "pages/index/index",
     "pages/wordgen/wordgen",
-    "pages/dice/dice"
+    "pages/dice/dice",
+    "pages/turtle/turtle",
+    "pages/fortune/fortune",
+    "pages/decide/decide",
+    "pages/persona/persona"
   ],
   "window": {
     "navigationBarTitleText": "聚会趣味游戏",
